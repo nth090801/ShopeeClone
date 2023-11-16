@@ -15,18 +15,19 @@ export default function Login() {
                   className='p-3 w-full outline-none border border-gray-300 focus:border-gray-500 rounded-sm focus:shadow-sm'
                   placeholder='Email'
                 />
-                <div className='mt-1 text-red-600 min-h-[1rem] text-sm text-left'></div>
+                <div className='mt-1 text-red-600 min-h-[1.25rem] text-sm text-left'></div>
               </div>
-              <div className='mt-3'>
+              <div className='mt-2'>
                 <input
                   type='password'
                   name='Password'
                   className='p-3 w-full outline-none border border-gray-300 focus:border-gray-500 rounded-sm focus:shadow-sm'
                   placeholder='Password'
+                  autoComplete='on'
                 />
-                <div className='mt-1 text-red-600 min-h-[1rem] text-sm text-left'></div>
+                <div className='mt-1 text-red-600 min-h-[1.25rem] text-sm text-left'></div>
               </div>
-              <div className='mt-3'>
+              <div className='mt-2'>
                 <button className='w-full text-center py-4 px-2 uppercase bg-red-500 text-white text-sm hover:bg-red-600'>
                   Đăng nhập
                 </button>
