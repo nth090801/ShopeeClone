@@ -1,18 +1,30 @@
 import { Link } from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import '@fortawesome/fontawesome-svg-core/styles.css'
 import { faCartShopping } from '@fortawesome/free-solid-svg-icons'
+import '@fortawesome/fontawesome-svg-core/styles.css'
+import Popover from '../Popover'
 
 export default function Header() {
   return (
     <div className='pb-5 pt-2 bg-[linear-gradient(-180deg,#f53d2d,#f63)] text-white'>
       <div className='container'>
+        {/* info */}
         <div className='flex justify-between text-sm'>
-          <ul className='inline-flex'>
-            <li>Kênh người bán</li>
-          </ul>
-          <ul className='inline-flex'>
-            <li className='flex py-1 hover:text-gray-300 cursor-pointer'>
+          <div className='inline-flex'>
+            <div>Kênh người bán</div>
+          </div>
+          <div className='inline-flex'>
+            <Popover
+              className='flex items-center py-1 hover:text-gray-300 cursor-pointer'
+              renderPopover={
+                <div className='bg-white relative shadow-md rounded-sm border border-gray-200'>
+                  <div className='flex flex-col py-2 pr-28 pl-3'>
+                    <button className='py-2 px-3 hover:text-orange'>Tiếng Việt</button>
+                    <button className='py-2 px-3 hover:text-orange mt-2'>EngLish</button>
+                  </div>
+                </div>
+              }
+            >
               <svg
                 xmlns='http://www.w3.org/2000/svg'
                 fill='none'
@@ -38,9 +50,30 @@ export default function Header() {
               >
                 <path strokeLinecap='round' strokeLinejoin='round' d='M19.5 8.25l-7.5 7.5-7.5-7.5' />
               </svg>
-            </li>
+            </Popover>
 
-            <li className='flex py-1 hover:text-gray-300 cursor-pointer ml-6'>
+            <Popover
+              className='flex py-1 hover:text-gray-300 cursor-pointer ml-6'
+              renderPopover={
+                <div className='bg-white relative shadow-md rounded-sm border border-gray-200'>
+                  <Link
+                    to='/'
+                    className='block py-3 px-4 hover:bg-slate-100 bg-white hover:text-cyan-500 w-full text-left'
+                  >
+                    Tài khoản của tôi
+                  </Link>
+                  <Link
+                    to='/'
+                    className='block py-3 px-4 hover:bg-slate-100 bg-white hover:text-cyan-500 w-full text-left'
+                  >
+                    Đơn mua
+                  </Link>
+                  <button className='block py-3 px-4 hover:bg-slate-100 bg-white hover:text-cyan-500 w-full text-left'>
+                    Đăng xuất
+                  </button>
+                </div>
+              }
+            >
               <div className='w-5 h-5 mr-2 flex-shrink-0'>
                 <img
                   src='https://avatars.githubusercontent.com/u/100473311?v=4'
@@ -49,8 +82,8 @@ export default function Header() {
                 />
               </div>
               <div>ThanhHoai</div>
-            </li>
-          </ul>
+            </Popover>
+          </div>
         </div>
 
         {/* Logo */}
