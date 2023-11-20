@@ -1,8 +1,8 @@
 import { User } from './user.type'
-import { ResponseApi } from './utils.type'
+import { SuccessResponse } from './utils.type'
 
-export type AuthResponse = ResponseApi<{
-  access_Token: string
+export type AuthResponse = SuccessResponse<{
+  access_token: string
   expires: number
   user: User
 }>
