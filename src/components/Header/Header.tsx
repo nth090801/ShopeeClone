@@ -21,16 +21,144 @@ export default function Header() {
     logoutMutation.mutate()
   }
   return (
-    <div className='pb-5 pt-2 bg-[linear-gradient(-180deg,#f53d2d,#f63)] text-white'>
+    <div className='pb-5  pt-2 bg-[linear-gradient(-180deg,#f53d2d,#f63)] text-white  w-full z-50'>
       <div className='container'>
         {/* info */}
         <div className='flex justify-between text-sm'>
-          <div className='inline-flex'>
-            <div>Kênh người bán</div>
+          <div className='inline-flex items-center'>
+            <div className='border-r-[1px] border-r-white/40 h-4 mx-1 hover:text-gray-300 cursor-pointer'>
+              <p className='mr-2'>Kênh người bán</p>
+            </div>
+            <div className='border-r-[1px] border-r-white/40 h-4 mx-1 hover:text-gray-300 cursor-pointer'>
+              <p className='mr-2'>Trờ thành người bán Shopee</p>
+            </div>
+            <Popover
+              className='border-r-[1px] border-r-white/40 h-4 mx-1 hover:text-gray-300 cursor-pointer'
+              renderPopover={
+                <div className='bg-white  flex-col relative shadow-md rounded-sm border border-gray-200 '>
+                  <div className='p-1 rounded-sm mt-3 w-44 block'>
+                    <img
+                      className='w-44 h-44 border-0'
+                      src='https://deo.shopeemobile.com/shopee/shopee-pcmall-live-sg/assets/d91264e165ed6facc6178994d5afae79.png'
+                      alt='qr'
+                    />
+                    <div className='flex flex-wrap items-center justify-between px-3'>
+                      <div className='block w-16 h-4'>
+                        <img
+                          src='	https://deo.shopeemobile.com/shopee/shopee-pcmall-live-sg/assets/39f189e19764dab688d3850742f13718.png'
+                          alt='apple store'
+                          className=' w-full h-full border-0'
+                        />
+                      </div>
+                      <div className='block w-16 h-4'>
+                        <img
+                          src='	https://deo.shopeemobile.com/shopee/shopee-pcmall-live-sg/assets/f4f5426ce757aea491dce94201560583.png'
+                          alt='apple store'
+                          className=' w-full h-full border-0'
+                        />
+                      </div>
+                      <div className='block w-16 h-4 mt-3'>
+                        <img
+                          src='	https://deo.shopeemobile.com/shopee/shopee-pcmall-live-sg/assets/1ae215920a31f2fc75b00d4ee9ae8551.png'
+                          alt='apple store'
+                          className=' w-full h-full border-0'
+                        />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              }
+            >
+              <div className='flex items-center'>
+                <span className='mr-2'>Tải ứng dụng</span>
+              </div>
+            </Popover>
+            <div className='mx-1 mt-1'>Kết nối</div>
+            <div className='flex border-0 w-12 justify-around mt-[1px]'>
+              <Link to='https://www.facebook.com/ShopeeVN' className='w-4 h-4 text-base fill-white cursor-pointer '>
+                <svg xmlns='http://www.w3.org/2000/svg' height='1em' viewBox='0 0 512 512'>
+                  <path d='M504 256C504 119 393 8 256 8S8 119 8 256c0 123.78 90.69 226.38 209.25 245V327.69h-63V256h63v-54.64c0-62.15 37-96.48 93.67-96.48 27.14 0 55.52 4.84 55.52 4.84v61h-31.28c-30.8 0-40.41 19.12-40.41 38.73V256h68.78l-11 71.69h-57.78V501C413.31 482.38 504 379.78 504 256z' />
+                </svg>
+              </Link>
+              <Link to='https://instagram.com/Shopee_VN' className='w-4 h-4 text-base fill-white cursor-pointer'>
+                <svg xmlns='http://www.w3.org/2000/svg' height='1em' viewBox='0 0 448 512'>
+                  <path d='M224.1 141c-63.6 0-114.9 51.3-114.9 114.9s51.3 114.9 114.9 114.9S339 319.5 339 255.9 287.7 141 224.1 141zm0 189.6c-41.1 0-74.7-33.5-74.7-74.7s33.5-74.7 74.7-74.7 74.7 33.5 74.7 74.7-33.6 74.7-74.7 74.7zm146.4-194.3c0 14.9-12 26.8-26.8 26.8-14.9 0-26.8-12-26.8-26.8s12-26.8 26.8-26.8 26.8 12 26.8 26.8zm76.1 27.2c-1.7-35.9-9.9-67.7-36.2-93.9-26.2-26.2-58-34.4-93.9-36.2-37-2.1-147.9-2.1-184.9 0-35.8 1.7-67.6 9.9-93.9 36.1s-34.4 58-36.2 93.9c-2.1 37-2.1 147.9 0 184.9 1.7 35.9 9.9 67.7 36.2 93.9s58 34.4 93.9 36.2c37 2.1 147.9 2.1 184.9 0 35.9-1.7 67.7-9.9 93.9-36.2 26.2-26.2 34.4-58 36.2-93.9 2.1-37 2.1-147.8 0-184.8zM398.8 388c-7.8 19.6-22.9 34.7-42.6 42.6-29.5 11.7-99.5 9-132.1 9s-102.7 2.6-132.1-9c-19.6-7.8-34.7-22.9-42.6-42.6-11.7-29.5-9-99.5-9-132.1s-2.6-102.7 9-132.1c7.8-19.6 22.9-34.7 42.6-42.6 29.5-11.7 99.5-9 132.1-9s102.7-2.6 132.1 9c19.6 7.8 34.7 22.9 42.6 42.6 11.7 29.5 9 99.5 9 132.1s2.7 102.7-9 132.1z' />
+                </svg>
+              </Link>
+            </div>
           </div>
           <div className='inline-flex'>
+            {/* Thông báo */}
             <Popover
-              className='flex items-center py-1 hover:text-gray-300 cursor-pointer'
+              className='flex items-center py-1 ml-3 hover:text-gray-300 cursor-pointer'
+              renderPopover={
+                <div className='bg-white  flex-col relative shadow-md rounded-sm border border-gray-200 w-[400px] h-[350px] '>
+                  <div className='w-full relative flex-col h-[310px] flex justify-center items-center '>
+                    <div className='absolute '>
+                      <img
+                        src='https://deo.shopeemobile.com/shopee/shopee-pcmall-live-sg/assets/99e561e3944805a023e87a81d4869600.png'
+                        alt='ảnh'
+                        className='w-[100px] h-[100px] flex-shrink-0 object-cover mt-[-50px] '
+                      />
+                    </div>
+                    <span className='absolute mt-32'>Đăng nhập để xem Thông báo</span>
+                  </div>
+                  <div className='w-full bottom-0 flex justify-around'>
+                    <Link
+                      className='hover:text-orange hover:bg-gray-200 h-10 w-[50%] bg-gray-100 flex justify-center items-center'
+                      to='/register'
+                    >
+                      <div>Đăng ký</div>
+                    </Link>
+                    <Link
+                      className='hover:text-orange hover:bg-gray-200 h-10 w-[50%] bg-gray-100 flex justify-center items-center'
+                      to='/login'
+                    >
+                      <div>Đăng Nhập</div>
+                    </Link>
+                  </div>
+                </div>
+              }
+            >
+              <div className='flex items-center'>
+                <svg
+                  xmlns='http://www.w3.org/2000/svg'
+                  fill='none'
+                  viewBox='0 0 24 24'
+                  strokeWidth={1.5}
+                  stroke='currentColor'
+                  className='w-6 h-6'
+                >
+                  <path
+                    strokeLinecap='round'
+                    strokeLinejoin='round'
+                    d='M14.857 17.082a23.848 23.848 0 005.454-1.31A8.967 8.967 0 0118 9.75v-.7V9A6 6 0 006 9v.75a8.967 8.967 0 01-2.312 6.022c1.733.64 3.56 1.085 5.455 1.31m5.714 0a24.255 24.255 0 01-5.714 0m5.714 0a3 3 0 11-5.714 0'
+                  />
+                </svg>
+
+                <span className='mx-1'>Thông báo</span>
+              </div>
+            </Popover>
+            <div className='flex items-center ml-3 hover:text-gray-300 cursor-pointer'>
+              <svg
+                xmlns='http://www.w3.org/2000/svg'
+                fill='none'
+                viewBox='0 0 24 24'
+                strokeWidth={1.5}
+                stroke='currentColor'
+                className='w-6 h-6'
+              >
+                <path
+                  strokeLinecap='round'
+                  strokeLinejoin='round'
+                  d='M9.879 7.519c1.171-1.025 3.071-1.025 4.242 0 1.172 1.025 1.172 2.687 0 3.712-.203.179-.43.326-.67.442-.745.361-1.45.999-1.45 1.827v.75M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-9 5.25h.008v.008H12v-.008z'
+                />
+              </svg>
+              <span className='mx-1 mt-[2px]'>Hỗ trợ</span>
+            </div>
+            {/* Tiếng Việt */}
+            <Popover
+              className='flex items-center py-1 ml-3 hover:text-gray-300 cursor-pointer'
               renderPopover={
                 <div className='bg-white relative shadow-md rounded-sm border border-gray-200'>
                   <div className='flex flex-col py-2 pr-28 pl-3'>
@@ -67,6 +195,7 @@ export default function Header() {
               </svg>
             </Popover>
             {isAuthenticated && (
+              // account
               <Popover
                 className='flex py-1 hover:text-gray-300 cursor-pointer ml-6'
                 renderPopover={
