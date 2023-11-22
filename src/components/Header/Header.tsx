@@ -7,13 +7,15 @@ import { useContext } from 'react'
 import { AppContext } from 'src/contexts/app.context'
 import { useMutation } from '@tanstack/react-query'
 import { logout } from 'src/apis/auth.api'
+import path from 'src/constants/path'
 
 export default function Header() {
-  const { isAuthenticated, setIsAuthenticated } = useContext(AppContext)
+  const { isAuthenticated, setIsAuthenticated, setProfile, profile } = useContext(AppContext)
   const logoutMutation = useMutation({
     mutationFn: () => logout(),
     onSuccess: () => {
       setIsAuthenticated(false)
+      setProfile(null)
     }
   })
 
@@ -26,14 +28,14 @@ export default function Header() {
         {/* info */}
         <div className='flex justify-between text-sm'>
           <div className='inline-flex items-center'>
-            <div className='border-r-[1px] border-r-white/40 h-4 mx-1 hover:text-gray-300 cursor-pointer'>
+            <div className='border-r-[1px] border-r-white/40 h-4 mx-1 hover:text-white/70 cursor-pointer'>
               <p className='mr-2'>Kênh người bán</p>
             </div>
-            <div className='border-r-[1px] border-r-white/40 h-4 mx-1 hover:text-gray-300 cursor-pointer'>
+            <div className='border-r-[1px] border-r-white/40 h-4 mx-1 hover:text-white/70 cursor-pointer'>
               <p className='mr-2'>Trờ thành người bán Shopee</p>
             </div>
             <Popover
-              className='border-r-[1px] border-r-white/40 h-4 mx-1 hover:text-gray-300 cursor-pointer'
+              className='border-r-[1px] border-r-white/40 h-4 mx-1 hover:text-white/70 cursor-pointer'
               renderPopover={
                 <div className='bg-white  flex-col relative shadow-md rounded-sm border border-gray-200 '>
                   <div className='p-1 rounded-sm mt-3 w-44 block'>
@@ -90,7 +92,7 @@ export default function Header() {
           <div className='inline-flex'>
             {/* Thông báo */}
             <Popover
-              className='flex items-center py-1 ml-3 hover:text-gray-300 cursor-pointer'
+              className='flex items-center py-1 ml-3 hover:text-white/70 cursor-pointer'
               renderPopover={
                 <div className='bg-white  flex-col relative shadow-md rounded-sm border border-gray-200 w-[400px] h-[350px] '>
                   <div className='w-full relative flex-col h-[310px] flex justify-center items-center '>
@@ -106,13 +108,13 @@ export default function Header() {
                   <div className='w-full bottom-0 flex justify-around'>
                     <Link
                       className='hover:text-orange hover:bg-gray-200 h-10 w-[50%] bg-gray-100 flex justify-center items-center'
-                      to='/register'
+                      to={path.register}
                     >
                       <div>Đăng ký</div>
                     </Link>
                     <Link
                       className='hover:text-orange hover:bg-gray-200 h-10 w-[50%] bg-gray-100 flex justify-center items-center'
-                      to='/login'
+                      to={path.login}
                     >
                       <div>Đăng Nhập</div>
                     </Link>
@@ -139,7 +141,7 @@ export default function Header() {
                 <span className='mx-1'>Thông báo</span>
               </div>
             </Popover>
-            <div className='flex items-center ml-3 hover:text-gray-300 cursor-pointer'>
+            <div className='flex items-center ml-3 hover:text-white/70 cursor-pointer'>
               <svg
                 xmlns='http://www.w3.org/2000/svg'
                 fill='none'
@@ -158,7 +160,7 @@ export default function Header() {
             </div>
             {/* Tiếng Việt */}
             <Popover
-              className='flex items-center py-1 ml-3 hover:text-gray-300 cursor-pointer'
+              className='flex items-center py-1 ml-3 hover:text-white/70 cursor-pointer'
               renderPopover={
                 <div className='bg-white relative shadow-md rounded-sm border border-gray-200'>
                   <div className='flex flex-col py-2 pr-28 pl-3'>
@@ -197,11 +199,11 @@ export default function Header() {
             {isAuthenticated && (
               // account
               <Popover
-                className='flex py-1 hover:text-gray-300 cursor-pointer ml-6'
+                className='flex py-1 hover:text-white/70 cursor-pointer ml-6'
                 renderPopover={
                   <div className='bg-white relative shadow-md rounded-sm border border-gray-200'>
                     <Link
-                      to='/profile'
+                      to={path.profile}
                       className='block py-3 px-4 hover:bg-slate-100 bg-white hover:text-cyan-500 w-full text-left'
                     >
                       Tài khoản của tôi
@@ -228,16 +230,16 @@ export default function Header() {
                     className='w-full h-full object-cover rounded-full'
                   />
                 </div>
-                <div>ThanhHoai</div>
+                <div>{profile?.email}</div>
               </Popover>
             )}
             {!isAuthenticated && (
               <div className='flex items-center'>
-                <Link to='/register' className='mx-3 capitalize hover:text-white/70'>
+                <Link to={path.register} className='mx-3 capitalize hover:text-white/70'>
                   Đăng Ký
                 </Link>
                 <div className='border-r-[1px] border-r-white/40 h-4'></div>
-                <Link to='/login' className='mx-3 capitalize hover:text-white/70'>
+                <Link to={path.login} className='mx-3 capitalize hover:text-white/70'>
                   Đăng Nhập
                 </Link>
               </div>
