@@ -1,27 +1,31 @@
 import { Link } from 'react-router-dom'
+import { Product as ProductType } from 'src/types/product.type'
+import { formatCurrency, formatNumberToSocialStyle } from 'src/utils/utils'
+interface Props {
+  product: ProductType
+}
 
-export default function Product() {
+export default function Product({ product }: Props) {
   return (
     <Link to=''>
       <div className='bg-white shadow rounded-sm overflow-hidden hover:translate-y-[-0.05rem] hover:shadow-md duration-100  transition-transform'>
         <div className='w-full pt-[100%] relative '>
           <img
             className='absolute top-0 left-0 bg-white w-full h-full object-cover'
-            src='https://down-vn.img.susercontent.com/file/4e30e14b1eaa6b281618c2b91853c7a6_tn'
-            alt='pic'
+            src={product.image}
+            alt={product.name}
           />
         </div>
         <div className='p-2 overflow-hidden'>
-          <div className='min-h-[2rem] line-clamp-2 text-xs'>
-            Áo Sweater Nam Form Rộng Phối Layer Chất Nỉ Unisex Thời Trang Trẻ Trung VESCA M10
-          </div>
+          <div className='min-h-[2rem] line-clamp-2 text-xs'>{product.name}</div>
           <div className='flex items-center mt-3'>
             <div className='line-through max-w-[50%] text-gray-500 truncate'>
-              <span>₫200.000</span>
+              <span>₫</span>
+              <span>{formatCurrency(product.price_before_discount)}</span>
             </div>
             <div className='text-orange ml-2 truncate'>
               <span className='text-xs'>₫</span>
-              <span>129.000</span>
+              <span>{formatCurrency(product.price)}</span>
             </div>
           </div>
           <div className='mt-3 flex items-center justify-start'>
@@ -60,7 +64,7 @@ export default function Product() {
               </div>
             </div>
             <div className='ml-2 text-sm'>
-              <span>5.66k</span>
+              <span>{formatNumberToSocialStyle(product.sold)}</span>
               <span className='ml-1'>Đã bán</span>
             </div>
           </div>
