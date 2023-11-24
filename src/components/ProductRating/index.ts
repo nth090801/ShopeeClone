@@ -1,3 +1,3 @@
-import ProducRating from './ProducRating'
+import ProductRating from './ProductRating'
 
-export default ProducRating
+export default ProductRating
