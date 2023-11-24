@@ -44,6 +44,7 @@ export default function ProductList() {
       return categoryApi.getCategories()
     }
   })
+
   return (
     <div className='bg-[#F5F5F5] py-6'>
       <div className='container'>

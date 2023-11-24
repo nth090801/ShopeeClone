@@ -11,8 +11,8 @@ import { useContext } from 'react'
 import { AppContext } from 'src/contexts/app.context'
 import Button from 'src/components/Button'
 
-type FormData = Omit<Schema, 'confirm_password'>
-const loginSchema = schema.omit(['confirm_password'])
+type FormData = Pick<Schema, 'email' | 'password'>
+const loginSchema = schema.pick(['email', 'password'])
 export default function Login() {
   const { setIsAuthenticated, setProfile } = useContext(AppContext)
   const navigate = useNavigate()
@@ -81,8 +81,8 @@ export default function Login() {
                 <Button
                   type='submit'
                   className='flex w-full items-center justify-center bg-red-500 px-2 py-4 text-sm uppercase text-white hover:bg-red-600'
-                  isLoading={loginMutation.isPending}
-                  disabled={loginMutation.isPending}
+                  isLoading={loginMutation.isLoading}
+                  disabled={loginMutation.isLoading}
                 >
                   Đăng nhập
                 </Button>
