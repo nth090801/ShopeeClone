@@ -1,7 +1,7 @@
 import { Link, createSearchParams, useNavigate } from 'react-router-dom'
 import Button from 'src/components/Button'
 import path from 'src/constants/path'
-import { QueryConfig } from '../ProductList'
+import { QueryConfig } from '../../ProductList'
 import { Category } from 'src/types/category.type'
 import classNames from 'classnames'
 import InputNumber from 'src/components/InputNumber'
@@ -186,10 +186,7 @@ export default function AsideFilter({ queryConfig, categories }: Props) {
               }}
             />
           </div>
-          <div className='my-1 min-h-[1.25rem] text-left text-center text-sm text-red-600'>
-            {' '}
-            {errors.price_min?.message}
-          </div>
+          <div className='my-1 min-h-[1.25rem] text-center text-sm text-red-600'> {errors.price_min?.message}</div>
           <Button className='flex h-[30px] w-full items-center justify-center bg-orange text-sm uppercase text-white hover:bg-orange/80'>
             Áp dụng
           </Button>
