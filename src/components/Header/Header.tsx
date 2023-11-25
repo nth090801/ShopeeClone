@@ -103,22 +103,25 @@ export default function Header() {
                         className='mt-[-50px] h-[100px] w-[100px] flex-shrink-0 object-cover '
                       />
                     </div>
-                    <span className='absolute mt-32'>Đăng nhập để xem Thông báo</span>
+                    {isAuthenticated && <span className='absolute mt-32'>Không có thông báo nào</span>}
+                    {!isAuthenticated && <span className='absolute mt-32'>Đăng nhập để xem Thông báo</span>}
                   </div>
-                  <div className='bottom-0 flex w-full justify-around'>
-                    <Link
-                      className='flex h-10 w-[50%] items-center justify-center bg-gray-100 hover:bg-gray-200 hover:text-orange'
-                      to={path.register}
-                    >
-                      <div>Đăng ký</div>
-                    </Link>
-                    <Link
-                      className='flex h-10 w-[50%] items-center justify-center bg-gray-100 hover:bg-gray-200 hover:text-orange'
-                      to={path.login}
-                    >
-                      <div>Đăng Nhập</div>
-                    </Link>
-                  </div>
+                  {!isAuthenticated && (
+                    <div className='bottom-0 flex w-full justify-around'>
+                      <Link
+                        className='flex h-10 w-[50%] items-center justify-center bg-gray-100 hover:bg-gray-200 hover:text-orange'
+                        to={path.register}
+                      >
+                        <div>Đăng ký</div>
+                      </Link>
+                      <Link
+                        className='flex h-10 w-[50%] items-center justify-center bg-gray-100 hover:bg-gray-200 hover:text-orange'
+                        to={path.login}
+                      >
+                        <div>Đăng Nhập</div>
+                      </Link>
+                    </div>
+                  )}
                 </div>
               }
             >
@@ -163,7 +166,7 @@ export default function Header() {
               className='ml-3 flex cursor-pointer items-center py-1 hover:text-white/70'
               renderPopover={
                 <div className='relative rounded-sm border border-gray-200 bg-white shadow-md'>
-                  <div className='flex flex-col py-2 pl-3 pr-28'>
+                  <div className='flex flex-col items-start py-2 pl-3 pr-28 '>
                     <button className='px-3 py-2 hover:text-orange'>Tiếng Việt</button>
                     <button className='mt-2 px-3 py-2 hover:text-orange'>EngLish</button>
                   </div>
