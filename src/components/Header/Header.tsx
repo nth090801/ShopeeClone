@@ -5,7 +5,7 @@ import '@fortawesome/fontawesome-svg-core/styles.css'
 import Popover from '../Popover'
 import { useContext } from 'react'
 import { AppContext } from 'src/contexts/app.context'
-import { useMutation } from '@tanstack/react-query'
+import { useMutation, useQuery } from '@tanstack/react-query'
 import path from 'src/constants/path'
 import authApi from 'src/apis/auth.api'
 import useQueryConfig from 'src/hook/useQueryConfig'
@@ -13,10 +13,14 @@ import { useForm } from 'react-hook-form'
 import { Schema, schema } from 'src/utils/rules'
 import { yupResolver } from '@hookform/resolvers/yup'
 import { omit } from 'lodash'
+import { purchasesStatus } from 'src/constants/purchase'
+import purchaseApi from 'src/apis/purchase.api'
+import { formatCurrency } from 'src/utils/utils'
 
 type FormData = Pick<Schema, 'name'>
 
 const nameSchema = schema.pick(['name'])
+const MAX_PURCHASES = 5
 
 export default function Header() {
   const queryConfig = useQueryConfig()
@@ -36,6 +40,13 @@ export default function Header() {
       setProfile(null)
     }
   })
+
+  const { data: purchasesInCartData } = useQuery({
+    queryKey: ['purchases', { status: purchasesStatus.inCart }],
+    queryFn: () => purchaseApi.getPurchases({ status: purchasesStatus.inCart })
+  })
+
+  const purchasesInCart = purchasesInCartData?.data.data
 
   const handleLogout = () => {
     logoutMutation.mutate()
@@ -329,118 +340,58 @@ export default function Header() {
             <Popover
               renderPopover={
                 <div className='relative max-w-[400px] rounded-sm border border-gray-200 bg-white text-sm shadow-md'>
-                  <div className='p-2'>
-                    <div className='capitalize text-gray-400'>Sản phẩm mới thêm</div>
-                    {/* list item */}
-                    <div className='mt-5'>
-                      {/* item */}
-                      <div className='mt-4 flex'>
-                        <div className='flex-shrink-0'>
-                          <img
-                            src='	https://down-vn.img.susercontent.com/file/cn-11134207-7qukw-lfzs01e60ake02_tn
-'
-                            alt='ảnh'
-                            className='h-11 w-11 object-cover'
-                          />
-                        </div>
-                        <div className='ml-2 flex-grow overflow-hidden'>
-                          <div className='truncate'>
-                            Thảm Treo Tường Trang Trí Phòng Khách / Phòng Ngủ In Hoạt Hình Naruto Sasuke Itachi
+                  {purchasesInCart?.slice(0, 5) ? (
+                    <div className='w-full'>
+                      <div className='p-2 capitalize text-gray-400'>Sản phẩm mới thêm</div>
+
+                      <div className='mt-1 w-full'>
+                        {purchasesInCart?.slice(0, MAX_PURCHASES).map((purchase) => (
+                          <div className='mt-2 flex w-full p-2 py-2 hover:bg-[#f8f8f8]' key={purchase._id}>
+                            <div className='flex-shrink-0'>
+                              <img
+                                src={purchase.product.image}
+                                alt={purchase.product.name}
+                                className='h-11 w-11 object-cover'
+                              />
+                            </div>
+                            <div className='ml-2 flex-grow overflow-hidden'>
+                              <div className='truncate'>{purchase.product.name}</div>
+                            </div>
+                            <div className='ml-2 flex-shrink-0'>
+                              <span className='text-orange'>₫ {formatCurrency(purchase.product.price)}</span>
+                            </div>
                           </div>
-                        </div>
-                        <div className='ml-2 flex-shrink-0'>
-                          <span className='text-orange'>₫160.615</span>
-                        </div>
+                        ))}
                       </div>
-                      {/* item */}
-                      <div className='mt-4 flex'>
-                        <div className='flex-shrink-0'>
-                          <img
-                            src='	https://down-vn.img.susercontent.com/file/cn-11134207-7qukw-lfzs01e60ake02_tn
-'
-                            alt='ảnh'
-                            className='h-11 w-11 object-cover'
-                          />
+                      <div className='mt-6 flex items-center justify-between p-2'>
+                        <div className='text-xs capitalize text-gray-500'>
+                          {purchasesInCart.length > MAX_PURCHASES
+                            ? `${purchasesInCart.length - MAX_PURCHASES} Thêm hàng vào giỏ`
+                            : ' '}
                         </div>
-                        <div className='ml-2 flex-grow overflow-hidden'>
-                          <div className='truncate'>
-                            Thảm Treo Tường Trang Trí Phòng Khách / Phòng Ngủ In Hoạt Hình Naruto Sasuke Itachi
-                          </div>
-                        </div>
-                        <div className='ml-2 flex-shrink-0'>
-                          <span className='text-orange'>₫160.615</span>
-                        </div>
-                      </div>
-                      {/* item */}
-                      <div className='mt-4 flex'>
-                        <div className='flex-shrink-0'>
-                          <img
-                            src='	https://down-vn.img.susercontent.com/file/cn-11134207-7qukw-lfzs01e60ake02_tn
-'
-                            alt='ảnh'
-                            className='h-11 w-11 object-cover'
-                          />
-                        </div>
-                        <div className='ml-2 flex-grow overflow-hidden'>
-                          <div className='truncate'>
-                            Thảm Treo Tường Trang Trí Phòng Khách / Phòng Ngủ In Hoạt Hình Naruto Sasuke Itachi
-                          </div>
-                        </div>
-                        <div className='ml-2 flex-shrink-0'>
-                          <span className='text-orange'>₫160.615</span>
-                        </div>
-                      </div>
-                      {/* item */}
-                      <div className='mt-4 flex'>
-                        <div className='flex-shrink-0'>
-                          <img
-                            src='	https://down-vn.img.susercontent.com/file/cn-11134207-7qukw-lfzs01e60ake02_tn
-'
-                            alt='ảnh'
-                            className='h-11 w-11 object-cover'
-                          />
-                        </div>
-                        <div className='ml-2 flex-grow overflow-hidden'>
-                          <div className='truncate'>
-                            Thảm Treo Tường Trang Trí Phòng Khách / Phòng Ngủ In Hoạt Hình Naruto Sasuke Itachi
-                          </div>
-                        </div>
-                        <div className='ml-2 flex-shrink-0'>
-                          <span className='text-orange'>₫160.615</span>
-                        </div>
-                      </div>
-                      {/* item */}
-                      <div className='mt-4 flex'>
-                        <div className='flex-shrink-0'>
-                          <img
-                            src='	https://down-vn.img.susercontent.com/file/cn-11134207-7qukw-lfzs01e60ake02_tn
-'
-                            alt='ảnh'
-                            className='h-11 w-11 object-cover'
-                          />
-                        </div>
-                        <div className='ml-2 flex-grow overflow-hidden'>
-                          <div className='truncate'>
-                            Thảm Treo Tường Trang Trí Phòng Khách / Phòng Ngủ In Hoạt Hình Naruto Sasuke Itachi
-                          </div>
-                        </div>
-                        <div className='ml-2 flex-shrink-0'>
-                          <span className='text-orange'>₫160.615</span>
-                        </div>
+                        <button className='rounded-sm bg-orange px-4 py-2 capitalize text-white hover:opacity-90'>
+                          Xem giỏ hàng
+                        </button>
                       </div>
                     </div>
-                    <div className='mt-6 flex items-center justify-between'>
-                      <div className='text-xs capitalize text-gray-500'>Thêm vào giỏ hàng</div>
-                      <button className='rounded-sm bg-orange px-4 py-2 capitalize text-white hover:opacity-90'>
-                        Xem giỏ hàng
-                      </button>
+                  ) : (
+                    <div className='relative flex h-[300px] w-[300px] items-center justify-center p-2'>
+                      <img
+                        src='https://deo.shopeemobile.com/shopee/shopee-pcmall-live-sg/assets/9bdd8040b334d31946f49e36beaf32db.png'
+                        alt='no-purchase'
+                        className='absolute h-24 w-24'
+                      />
+                      <div className='absolute mt-32'>Chưa có sản phẩm</div>
                     </div>
-                  </div>
+                  )}
                 </div>
               }
             >
-              <Link to='/'>
+              <Link to='/' className='relative'>
                 <FontAwesomeIcon className='h-8 w-8' icon={faCartShopping} />
+                <span className='absolute left-[22px] top-[-20px] rounded-full bg-white px-[9px] py-[1px] text-xs text-orange'>
+                  {purchasesInCart?.length}
+                </span>
               </Link>
             </Popover>
           </div>
