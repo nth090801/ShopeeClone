@@ -5,7 +5,7 @@ import '@fortawesome/fontawesome-svg-core/styles.css'
 import Popover from '../Popover'
 import { useContext } from 'react'
 import { AppContext } from 'src/contexts/app.context'
-import { useMutation, useQuery } from '@tanstack/react-query'
+import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query'
 import path from 'src/constants/path'
 import authApi from 'src/apis/auth.api'
 import useQueryConfig from 'src/hook/useQueryConfig'
@@ -23,6 +23,7 @@ const nameSchema = schema.pick(['name'])
 const MAX_PURCHASES = 5
 
 export default function Header() {
+  const queryClient = useQueryClient()
   const queryConfig = useQueryConfig()
   const navigate = useNavigate()
 
@@ -33,17 +34,20 @@ export default function Header() {
     resolver: yupResolver(nameSchema)
   })
   const { isAuthenticated, setIsAuthenticated, setProfile, profile } = useContext(AppContext)
+
   const logoutMutation = useMutation({
     mutationFn: authApi.logout,
     onSuccess: () => {
       setIsAuthenticated(false)
       setProfile(null)
+      queryClient.removeQueries({ queryKey: ['purchases', { status: purchasesStatus.inCart }] })
     }
   })
 
   const { data: purchasesInCartData } = useQuery({
     queryKey: ['purchases', { status: purchasesStatus.inCart }],
-    queryFn: () => purchaseApi.getPurchases({ status: purchasesStatus.inCart })
+    queryFn: () => purchaseApi.getPurchases({ status: purchasesStatus.inCart }),
+    enabled: isAuthenticated
   })
 
   const purchasesInCart = purchasesInCartData?.data.data
@@ -143,16 +147,14 @@ export default function Header() {
               className='ml-3 flex cursor-pointer items-center py-1 hover:text-white/70'
               renderPopover={
                 <div className='relative  h-[350px] w-[400px] flex-col rounded-sm border border-gray-200 bg-white shadow-md '>
-                  <div className='relative flex h-[310px] w-full flex-col items-center justify-center '>
-                    <div className='absolute '>
-                      <img
-                        src='https://deo.shopeemobile.com/shopee/shopee-pcmall-live-sg/assets/99e561e3944805a023e87a81d4869600.png'
-                        alt='ảnh'
-                        className='mt-[-50px] h-[100px] w-[100px] flex-shrink-0 object-cover '
-                      />
-                    </div>
-                    {isAuthenticated && <span className='absolute mt-32'>Không có thông báo nào</span>}
-                    {!isAuthenticated && <span className='absolute mt-32'>Đăng nhập để xem Thông báo</span>}
+                  <div className=' flex h-[310px] w-full flex-col items-center justify-center '>
+                    <img
+                      src='https://deo.shopeemobile.com/shopee/shopee-pcmall-live-sg/assets/99e561e3944805a023e87a81d4869600.png'
+                      alt='ảnh'
+                      className='mt-[20px] h-[100px] w-[100px] flex-shrink-0 object-cover '
+                    />
+                    {isAuthenticated && <span className='mt-3'>Không có thông báo nào</span>}
+                    {!isAuthenticated && <span className='mt-3'>Đăng nhập để xem Thông báo</span>}
                   </div>
                   {!isAuthenticated && (
                     <div className='bottom-0 flex w-full justify-around'>
@@ -369,19 +371,22 @@ export default function Header() {
                             ? `${purchasesInCart.length - MAX_PURCHASES} Thêm hàng vào giỏ`
                             : ' '}
                         </div>
-                        <button className='rounded-sm bg-orange px-4 py-2 capitalize text-white hover:opacity-90'>
+                        <Link
+                          to={path.cart}
+                          className='rounded-sm bg-orange px-4 py-2 capitalize text-white hover:opacity-90'
+                        >
                           Xem giỏ hàng
-                        </button>
+                        </Link>
                       </div>
                     </div>
                   ) : (
-                    <div className='relative flex h-[300px] w-[300px] items-center justify-center p-2'>
+                    <div className=' flex h-[300px] w-[300px] flex-col items-center justify-center p-2'>
                       <img
                         src='https://deo.shopeemobile.com/shopee/shopee-pcmall-live-sg/assets/9bdd8040b334d31946f49e36beaf32db.png'
                         alt='no-purchase'
-                        className='absolute h-24 w-24'
+                        className='h-24 w-24'
                       />
-                      <div className='absolute mt-32'>Chưa có sản phẩm</div>
+                      <div className='mt-3'>Chưa có sản phẩm</div>
                     </div>
                   )}
                 </div>
@@ -389,9 +394,11 @@ export default function Header() {
             >
               <Link to='/' className='relative'>
                 <FontAwesomeIcon className='h-8 w-8' icon={faCartShopping} />
-                <span className='absolute left-[22px] top-[-20px] rounded-full bg-white px-[9px] py-[1px] text-xs text-orange'>
-                  {purchasesInCart?.length}
-                </span>
+                {purchasesInCart && (
+                  <span className='absolute left-[22px] top-[-20px] rounded-full bg-white px-[9px] py-[1px] text-xs text-orange'>
+                    {purchasesInCart?.length}
+                  </span>
+                )}
               </Link>
             </Popover>
           </div>
