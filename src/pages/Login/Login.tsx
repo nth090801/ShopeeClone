@@ -80,7 +80,7 @@ export default function Login() {
               <div className='mt-2'>
                 <Button
                   type='submit'
-                  className='flex w-full items-center justify-center bg-red-500 px-2 py-4 text-sm uppercase text-white hover:bg-red-600'
+                  className='flex w-full items-center justify-center bg-orange px-2 py-4 text-sm uppercase text-white hover:bg-orange/90'
                   isLoading={loginMutation.isLoading}
                   disabled={loginMutation.isLoading}
                 >

@@ -75,7 +75,7 @@ export default function Header() {
     })
   })
   return (
-    <div className='z-50  w-full bg-[linear-gradient(-180deg,#f53d2d,#f63)] pb-5  pt-2 text-white'>
+    <div className=' w-full bg-[linear-gradient(-180deg,#f53d2d,#f63)] pb-5 pt-2 text-white'>
       <div className='container'>
         {/* info */}
         <div className='flex justify-between text-sm'>
