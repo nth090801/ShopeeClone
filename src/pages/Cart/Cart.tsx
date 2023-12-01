@@ -82,11 +82,11 @@ export default function Cart() {
       const extendedPurchasesObject = keyBy(prev, '_id')
       return (
         purchasesInCart?.map((purchase) => {
-          const isChoosenPurchaseIdFromLocation = choosenPurchaseIdFromLocation === purchase._id
+          const isChoosenPurchaseFromLocation = choosenPurchaseIdFromLocation === purchase._id
           return {
             ...purchase,
             disabled: false,
-            checked: isChoosenPurchaseIdFromLocation || Boolean(extendedPurchasesObject[purchase._id]?.checked)
+            checked: isChoosenPurchaseFromLocation || Boolean(extendedPurchasesObject[purchase._id]?.checked)
           }
         }) || []
       )
