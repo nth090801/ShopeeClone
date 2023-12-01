@@ -11,6 +11,9 @@ import { formatCurrency, generateNameId } from 'src/utils/utils'
 import { produce } from 'immer'
 import { keyBy } from 'lodash'
 import { toast } from 'react-toastify'
+import { ProductListConfig } from 'src/types/product.type'
+import productApi from 'src/apis/product.api'
+import Product from '../ProductList/components/Product'
 
 interface ExtendedPurchases extends Purchase {
   disabled: boolean
@@ -28,6 +31,16 @@ export default function Cart() {
   const totalCheckedPurchasesSavingPrice = checkedPurchases.reduce((result, current) => {
     return result + (current.product.price_before_discount - current.product.price) * current.buy_count
   }, 0)
+
+  const queryConfig: ProductListConfig = { limit: '20', page: '1' }
+  const { data: productsData } = useQuery({
+    queryKey: ['products', queryConfig],
+    queryFn: () => {
+      return productApi.getProducts(queryConfig)
+    },
+    // enabled: Boolean(product),
+    staleTime: 3 * 60 * 100
+  })
 
   const { data: purchasesInCartData, refetch } = useQuery({
     queryKey: ['purchases', { status: purchasesStatus.inCart }],
@@ -175,7 +188,7 @@ export default function Cart() {
                                 name: purchase.product.name,
                                 id: purchase.product._id
                               })}`}
-                              className='h-20 w-20 flex-shrink-0'
+                              className='h-20 w-20 flex-shrink-0 text-left'
                             >
                               <img src={purchase.product.image} alt={purchase.product.name} />
                             </Link>
@@ -298,6 +311,21 @@ export default function Cart() {
           </div>
         </div>
       )}
+      <div className='mt-8'>
+        <div className='container'>
+          <div className='uppercase text-gray-400'>Có thể bạn cũng thích</div>
+
+          <div className='col-span-10'>
+            <div className='mt-6 grid grid-cols-2 gap-3 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5'>
+              {productsData?.data.data.products.map((product) => (
+                <div className='col-span-1' key={product._id}>
+                  <Product product={product} />
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   )
 }
