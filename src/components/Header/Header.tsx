@@ -77,7 +77,7 @@ export default function Header() {
             <Popover
               renderPopover={
                 <div className='relative max-w-[400px] rounded-sm border border-gray-200 bg-white text-sm shadow-md'>
-                  {purchasesInCart?.slice(0, 5) ? (
+                  {purchasesInCart && purchasesInCart.length > 0 ? (
                     <div className='w-full'>
                       <div className='p-2 capitalize text-gray-400'>Sản phẩm mới thêm</div>
 
@@ -129,7 +129,7 @@ export default function Header() {
             >
               <Link to={path.cart} className='relative'>
                 <FontAwesomeIcon className='h-8 w-8' icon={faCartShopping} />
-                {purchasesInCart?.length !== 0 && (
+                {purchasesInCart && purchasesInCart.length > 0 && (
                   <span className='absolute left-[22px] top-[-20px] rounded-full bg-white px-[9px] py-[1px] text-xs text-orange'>
                     {purchasesInCart?.length}
                   </span>
