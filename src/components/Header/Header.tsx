@@ -392,7 +392,7 @@ export default function Header() {
                 </div>
               }
             >
-              <Link to='/' className='relative'>
+              <Link to={path.cart} className='relative'>
                 <FontAwesomeIcon className='h-8 w-8' icon={faCartShopping} />
                 {purchasesInCart && (
                   <span className='absolute left-[22px] top-[-20px] rounded-full bg-white px-[9px] py-[1px] text-xs text-orange'>
