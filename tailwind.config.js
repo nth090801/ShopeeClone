@@ -13,7 +13,9 @@ module.exports = {
         orange: '#ee4d2d'
       },
       backgroundImage: {
-        'custom-image': 'url("https://down-vn.img.susercontent.com/file/sg-11134004-7rblb-ln6wjyytbe3w27")'
+        'custom-image': 'url("https://down-vn.img.susercontent.com/file/sg-11134004-7rblb-ln6wjyytbe3w27")',
+        'no-product-image':
+          'url("https://deo.shopeemobile.com/shopee/shopee-pcmall-live-sg/9bdd8040b334d31946f49e36beaf32db.png")'
       }
     }
   },
