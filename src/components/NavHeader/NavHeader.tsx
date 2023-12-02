@@ -6,6 +6,7 @@ import path from 'src/constants/path'
 import { useMutation, useQueryClient } from '@tanstack/react-query'
 import authApi from 'src/apis/auth.api'
 import { purchasesStatus } from 'src/constants/purchase'
+import { getAvatarUrl } from 'src/utils/utils'
 
 export default function NavHeader() {
   const queryClient = useQueryClient()
@@ -209,7 +210,7 @@ export default function NavHeader() {
                   Tài khoản của tôi
                 </Link>
                 <Link
-                  to='/'
+                  to={path.historyPurchase}
                   className='block w-full bg-white px-4 py-3 text-left hover:bg-slate-100 hover:text-cyan-500'
                 >
                   Đơn mua
@@ -225,9 +226,9 @@ export default function NavHeader() {
           >
             <div className='mr-2 h-5 w-5 flex-shrink-0'>
               <img
-                src='https://avatars.githubusercontent.com/u/100473311?v=4'
-                alt=''
-                className='h-full w-full rounded-full object-cover'
+                src={getAvatarUrl(profile?.avatar)}
+                alt='avatar'
+                className='h-full w-full rounded-full fill-white object-cover'
               />
             </div>
             <div>{profile?.email}</div>
