@@ -12,6 +12,7 @@ import { ObjectSchema } from 'yup'
 import RatingStars from '../RatingStars'
 import omit from 'lodash/omit'
 import { QueryConfig } from 'src/hook/useQueryConfig'
+import { useTranslation } from 'react-i18next'
 
 interface Props {
   queryConfig: QueryConfig
@@ -23,12 +24,12 @@ type FormData = NoUndefinedField<Pick<Schema, 'price_min' | 'price_max'>>
 const priceSchema = schema.pick(['price_min', 'price_max'])
 
 export default function AsideFilter({ queryConfig, categories }: Props) {
+  const { t } = useTranslation('home')
   const { category } = queryConfig
   const navigate = useNavigate()
   const {
     control,
     handleSubmit,
-    watch,
     trigger,
     formState: { errors }
   } = useForm<FormData>({
@@ -57,9 +58,7 @@ export default function AsideFilter({ queryConfig, categories }: Props) {
       search: createSearchParams(omit(queryConfig, ['category', 'price_min', 'price_max', 'rating_filter'])).toString()
     })
   }
-  const valueForm = watch()
-  console.log(valueForm)
-  console.log(errors)
+
   return (
     <div className='py-4'>
       <Link
@@ -81,7 +80,7 @@ export default function AsideFilter({ queryConfig, categories }: Props) {
             </g>
           </g>
         </svg>
-        Tất cả danh mục
+        {t('aside filter.all categories')}
       </Link>
       {/* line */}
       <div className='my-4 h-[1px] bg-gray-300' />
@@ -131,7 +130,7 @@ export default function AsideFilter({ queryConfig, categories }: Props) {
             />
           </g>
         </svg>
-        Bộ lọc tìm kiếm
+        {t('aside filter.filter search')}
       </Link>
       {/* line */}
       <div className='my-4 h-[1px] bg-gray-300' />

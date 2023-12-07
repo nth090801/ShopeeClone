@@ -15,6 +15,7 @@ import { ProductListConfig } from 'src/types/product.type'
 import productApi from 'src/apis/product.api'
 import Product from '../ProductList/components/Product'
 import { AppContext } from 'src/contexts/app.context'
+import { Helmet } from 'react-helmet-async'
 
 export default function Cart() {
   const { extendedPurchases, setExtendedPurchases } = useContext(AppContext)
@@ -152,6 +153,10 @@ export default function Cart() {
 
   return (
     <div className='bg-neutral-100 py-16'>
+      <Helmet>
+        <title>Giỏ hàng | Shopee Clone</title>
+        <meta name='description' content='Trang giỏ hàng của bạn trong dự án Shopee Clone' />
+      </Helmet>
       {extendedPurchases.length > 0 ? (
         <div className='container'>
           <div className='overflow-auto'>

@@ -17,6 +17,10 @@ module.exports = {
         'no-product-image':
           'url("https://deo.shopeemobile.com/shopee/shopee-pcmall-live-sg/9bdd8040b334d31946f49e36beaf32db.png")',
         'not-found': "url('src/assets/notFound.svg')"
+      },
+      screens: {
+        'custom-min': '1056px',
+        'custom-max': { max: '1056px' }
       }
     }
   },

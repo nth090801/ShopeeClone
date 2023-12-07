@@ -1,12 +1,17 @@
+import { Helmet } from 'react-helmet-async'
 import { Link } from 'react-router-dom'
 import path from 'src/constants/path'
 
 export default function NotFound() {
   return (
     <div className='h-full w-full bg-white'>
+      <Helmet>
+        <title>Not Found | Shopee Clone</title>
+        <meta name='description' content='404 Not Found!!! ERROR' />
+      </Helmet>
       <div className='container mt-36'>
         <div className='m-auto block w-32 max-w-full'>
-          <div className='bg-not-found block w-[100%] bg-contain bg-center bg-no-repeat pb-[100%]'></div>
+          <div className='block w-[100%] bg-not-found bg-contain bg-center bg-no-repeat pb-[100%]'></div>
         </div>
         <div className='text-center text-gray-400'>
           <p>404</p>

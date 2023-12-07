@@ -1,5 +1,6 @@
 import { useQuery } from '@tanstack/react-query'
 import classNames from 'classnames'
+import { Helmet } from 'react-helmet-async'
 import { Link, createSearchParams } from 'react-router-dom'
 import purchaseApi from 'src/apis/purchase.api'
 import path from 'src/constants/path'
@@ -46,6 +47,10 @@ export default function HistoryPurchase() {
   ))
   return (
     <div>
+      <Helmet>
+        <title>Đơn mua | Shopee Clone</title>
+        <meta name='description' content='Lịch sử đơn mua hàng' />
+      </Helmet>
       <div className='overflow-x-auto'>
         <div className='min-w-[700px]'>
           <div className='sticky top-0 flex rounded-t-sm shadow-sm'>{purchaseTabsLink}</div>
