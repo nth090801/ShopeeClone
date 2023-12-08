@@ -33,7 +33,7 @@ export default function NavHeader() {
     i18n.changeLanguage(lng)
   }
   return (
-    <div className='custom-min:flex justify-between text-sm  '>
+    <div className='justify-between text-sm custom-min:flex  '>
       <div className='inline-flex items-center'>
         <div className='mx-1 h-4 cursor-pointer border-r-[1px] border-r-white/40 hover:text-white/70'>
           <p className='mr-2'>Kênh người bán</p>
@@ -100,7 +100,7 @@ export default function NavHeader() {
           </Link>
         </div>
       </div>
-      <div className='custom-max:mt-1 inline-flex'>
+      <div className='inline-flex custom-max:mt-1'>
         {/* Thông báo */}
         <Popover
           className='ml-3 flex cursor-pointer items-center py-1 hover:text-white/70'
