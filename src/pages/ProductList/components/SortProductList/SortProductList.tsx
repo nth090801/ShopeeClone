@@ -45,11 +45,11 @@ export default function SortProductList({ queryConfig, pageSize }: Props) {
   }
   return (
     <div className='bg-[#EDEDED] px-3 py-4'>
-      <div className='flex items-center justify-between gap-2'>
-        <div className='flex items-center gap-2'>
-          <div>Sắp xếp theo</div>
+      <div className=' flex items-center justify-between gap-2 custom-max-tablet:justify-center'>
+        <div className='flex items-center gap-2 custom-max-tablet:gap-4'>
+          <div className='custom-max-tablet:hidden'>Sắp xếp theo</div>
           <Button
-            className={classNames('h-8 rounded-sm  px-4 text-center text-sm capitalize ', {
+            className={classNames('h-8 rounded-sm  px-4 text-center text-sm capitalize custom-max-tablet:text-xs ', {
               'bg-orange text-white hover:bg-orange/80': isActiveSortBy(sortBy.view),
               'bg-white text-black hover:bg-slate-100': !isActiveSortBy(sortBy.view)
             })}
@@ -58,7 +58,7 @@ export default function SortProductList({ queryConfig, pageSize }: Props) {
             Phổ biến
           </Button>
           <Button
-            className={classNames('h-8 rounded-sm  px-4 text-center text-sm capitalize ', {
+            className={classNames('h-8 rounded-sm  px-4 text-center text-sm capitalize custom-max-tablet:text-xs ', {
               'bg-orange text-white hover:bg-orange/80': isActiveSortBy(sortBy.createdAt),
               'bg-white text-black hover:bg-slate-100': !isActiveSortBy(sortBy.createdAt)
             })}
@@ -68,7 +68,7 @@ export default function SortProductList({ queryConfig, pageSize }: Props) {
             Mới nhất
           </Button>
           <Button
-            className={classNames('h-8 rounded-sm  px-4 text-center text-sm capitalize ', {
+            className={classNames('h-8 rounded-sm  px-4 text-center text-sm capitalize custom-max-tablet:text-xs ', {
               'bg-orange text-white hover:bg-orange/80': isActiveSortBy(sortBy.sold),
               'bg-white text-black hover:bg-slate-100': !isActiveSortBy(sortBy.sold)
             })}
@@ -78,10 +78,13 @@ export default function SortProductList({ queryConfig, pageSize }: Props) {
             Bán chạy
           </Button>
           <select
-            className={classNames('h-8 rounded-sm  border-0 px-4 text-left  text-sm capitalize outline-none', {
-              'bg-orange text-white hover:bg-orange/80': isActiveSortBy(sortBy.price),
-              'bg-white text-black hover:bg-slate-100': !isActiveSortBy(sortBy.price)
-            })}
+            className={classNames(
+              'h-8 rounded-sm  border-0 px-4 text-left  text-sm capitalize outline-none custom-max-tablet:text-xs',
+              {
+                'bg-orange text-white hover:bg-orange/80': isActiveSortBy(sortBy.price),
+                'bg-white text-black hover:bg-slate-100': !isActiveSortBy(sortBy.price)
+              }
+            )}
             value={order || ''}
             onChange={(event) => handlePriceOrder(event.target.value as Exclude<ProductListConfig['order'], undefined>)}
             style={{ border: 0 }}
@@ -107,14 +110,14 @@ export default function SortProductList({ queryConfig, pageSize }: Props) {
             </option>
           </select>
         </div>
-        <div className='flex items-center'>
+        <div className='flex items-center custom-max-tablet:hidden'>
           <div>
             <span className='text-orange'>{page}</span>
             <span>/{pageSize}</span>
           </div>
-          <div className='ml-2 flex'>
+          <div className='ml-2 flex custom-max-tablet:hidden'>
             {page === 1 ? (
-              <span className='flex h-8 w-9 cursor-not-allowed items-center justify-center rounded-bl-sm rounded-tl-sm bg-white/60 px-3 shadow hover:bg-slate-100'>
+              <span className=' flex h-8 w-9 cursor-not-allowed items-center justify-center rounded-bl-sm rounded-tl-sm bg-white/60 px-3 shadow hover:bg-slate-100'>
                 <svg
                   xmlns='http://www.w3.org/2000/svg'
                   fill='none'

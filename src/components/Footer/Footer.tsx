@@ -5,7 +5,7 @@ export default function Footer() {
     <footer className='solid w-full border-t-4 border-orange bg-neutral-100 py-6'>
       <div className='container mt-6'>
         {/* footer top */}
-        <div className='flex grid grid-cols-5 items-start gap-6 lg:grid-cols-5'>
+        <div className=' grid grid-cols-5 items-start gap-6 lg:grid-cols-5 custom-max-tablet:grid-cols-3 custom-max-mobile:grid-cols-1'>
           {/* column */}
           <div className='box-border lg:col-span-1 '>
             <div className='text-[13px] font-bold uppercase '>Chăm sóc khách hàng</div>

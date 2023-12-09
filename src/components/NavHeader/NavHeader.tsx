@@ -34,7 +34,7 @@ export default function NavHeader() {
   }
   return (
     <div className='justify-between text-sm custom-min:flex  '>
-      <div className='inline-flex items-center'>
+      <div className='inline-flex items-center custom-max-tablet:hidden'>
         <div className='mx-1 h-4 cursor-pointer border-r-[1px] border-r-white/40 hover:text-white/70'>
           <p className='mr-2'>Kênh người bán</p>
         </div>
@@ -100,7 +100,7 @@ export default function NavHeader() {
           </Link>
         </div>
       </div>
-      <div className='inline-flex custom-max:mt-1'>
+      <div className='inline-flex custom-max-tablet:flex custom-max-tablet:justify-end '>
         {/* Thông báo */}
         <Popover
           className='ml-3 flex cursor-pointer items-center py-1 hover:text-white/70'
@@ -153,6 +153,7 @@ export default function NavHeader() {
             <span className='mx-1'>Thông báo</span>
           </div>
         </Popover>
+        {/* Hỗ trợ */}
         <div className='ml-3 flex cursor-pointer items-center hover:text-white/70'>
           <svg
             xmlns='http://www.w3.org/2000/svg'
