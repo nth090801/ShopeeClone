@@ -44,7 +44,7 @@ export default function SortProductList({ queryConfig, pageSize }: Props) {
     })
   }
   return (
-    <div className='bg-[#EDEDED] px-3 py-4'>
+    <div className='bg-[#EDEDED] px-3 py-4 '>
       <div className=' flex items-center justify-between gap-2 custom-max-tablet:justify-center'>
         <div className='flex items-center gap-2 custom-max-tablet:gap-4'>
           <div className='custom-max-tablet:hidden'>Sắp xếp theo</div>

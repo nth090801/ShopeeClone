@@ -34,14 +34,14 @@ export default function CartHeader() {
                   className='w-full flex-grow border-none bg-transparent px-3 py-2 text-black outline-none'
                   {...register('name')}
                 />
-                <button className='flex-shrink-0 rounded-sm bg-orange px-8 py-2 hover:opacity-90'>
+                <button className='mr-[-1px] flex-shrink-0 rounded-bl-sm rounded-tl-sm bg-orange px-8 py-2 hover:opacity-90'>
                   <svg
                     xmlns='http://www.w3.org/2000/svg'
                     fill='none'
                     viewBox='0 0 24 24'
                     strokeWidth={1.5}
-                    stroke='currentColor'
-                    className='h-5 w-5'
+                    stroke='white'
+                    className=' h-5 w-5 '
                   >
                     <path
                       strokeLinecap='round'

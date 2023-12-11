@@ -283,58 +283,58 @@ export default function Footer() {
           <div className='lg:col-span-2'>
             <div className='flex flex-wrap justify-center'>
               <div className='mr-[2px]'>Quốc gia & Khu vực:</div>
-              <div className='mr-[2px] cursor-pointer border-r border-solid border-gray-300 px-1 hover:text-orange'>
+              <div className='mr-[2px] cursor-pointer border-r border-solid border-gray-300 px-1 hover:text-orange custom-max-mobile:mt-3'>
                 Singapore
               </div>
-              <div className='mr-[2px] cursor-pointer border-r border-solid border-gray-300 px-1 hover:text-orange'>
+              <div className='mr-[2px] cursor-pointer border-r border-solid border-gray-300 px-1 hover:text-orange custom-max-mobile:mt-3'>
                 Indonesia
               </div>
-              <div className='mr-[2px] cursor-pointer border-r border-solid border-gray-300 px-1 hover:text-orange'>
+              <div className='mr-[2px] cursor-pointer border-r border-solid border-gray-300 px-1 hover:text-orange custom-max-mobile:mt-3'>
                 Thái Lan
               </div>
-              <div className='mr-[2px] cursor-pointer border-r border-solid border-gray-300 px-1 hover:text-orange'>
+              <div className='mr-[2px] cursor-pointer border-r border-solid border-gray-300 px-1 hover:text-orange custom-max-mobile:mt-3'>
                 Malaysia
               </div>
-              <div className='mr-[2px] cursor-pointer border-r border-solid border-gray-300 px-1 hover:text-orange'>
+              <div className='mr-[2px] cursor-pointer border-r border-solid border-gray-300 px-1 hover:text-orange custom-max-mobile:mt-3'>
                 Việt Nam
               </div>
-              <div className='mr-[2px] cursor-pointer border-r border-solid border-gray-300 px-1 hover:text-orange'>
+              <div className='mr-[2px] cursor-pointer border-r border-solid border-gray-300 px-1 hover:text-orange custom-max-mobile:mt-3'>
                 Philippines
               </div>
-              <div className='mr-[2px] cursor-pointer border-r border-solid border-gray-300 px-1 hover:text-orange'>
+              <div className='mr-[2px] cursor-pointer border-r border-solid border-gray-300 px-1 hover:text-orange custom-max-mobile:mt-3'>
                 Brazil
               </div>
-              <div className='mr-[2px] cursor-pointer border-r border-solid border-gray-300 px-1 hover:text-orange'>
+              <div className='mr-[2px] cursor-pointer border-r border-solid border-gray-300 px-1 hover:text-orange custom-max-mobile:mt-3'>
                 México
               </div>
-              <div className='mr-[2px] cursor-pointer border-r border-solid border-gray-300 px-1 hover:text-orange'>
+              <div className='mr-[2px] cursor-pointer border-r border-solid border-gray-300 px-1 hover:text-orange custom-max-mobile:mt-3'>
                 Colombia
               </div>
-              <div className='mr-[2px] cursor-pointer border-r border-solid border-gray-300 px-1 hover:text-orange'>
+              <div className='mr-[2px] cursor-pointer border-r border-solid border-gray-300 px-1 hover:text-orange custom-max-mobile:mt-3'>
                 Chile
               </div>
-              <div className='cursor-pointer pl-1 hover:text-orange'>Đài Loan</div>
+              <div className='cursor-pointer pl-1 hover:text-orange custom-max-mobile:mt-3'>Đài Loan</div>
             </div>
           </div>
         </div>
         {/* p2 */}
-        <div className='my-16 flex justify-center'>
-          <div className='block border-r border-solid border-gray-300 px-6 text-xs uppercase'>
+        <div className='my-16 flex justify-center custom-max-mobile:flex-wrap'>
+          <div className='block border-r border-solid border-gray-300 px-6 text-xs uppercase custom-max-mobile:mt-3 custom-max-mobile:border-none'>
             <Link to='/' className='block text-gray-500 no-underline'>
-              <span className='cursor-pointer hover:text-orange'>CHÍNH SÁCH BẢO MẬT</span>
+              <span className='cursor-pointer hover:text-orange '>CHÍNH SÁCH BẢO MẬT</span>
             </Link>
           </div>
-          <div className='block border-r border-solid border-gray-300 px-6 text-xs uppercase'>
+          <div className='block border-r border-solid border-gray-300 px-6 text-xs uppercase custom-max-mobile:mt-3 custom-max-mobile:border-none'>
             <Link to='/' className='block text-gray-500 no-underline'>
               <span className='cursor-pointer hover:text-orange'>QUY CHẾ HOẠT ĐỘNG</span>
             </Link>
           </div>
-          <div className='block border-r border-solid border-gray-300 px-6 text-xs uppercase'>
+          <div className='block border-r border-solid border-gray-300 px-6 text-xs uppercase custom-max-mobile:mt-5 custom-max-mobile:border-none'>
             <Link to='/' className='block text-gray-500 no-underline'>
               <span className='cursor-pointer hover:text-orange'>CHÍNH SÁCH VẬN CHUYỂN</span>
             </Link>
           </div>
-          <div className='block px-6 text-xs uppercase'>
+          <div className='block px-6 text-xs uppercase custom-max-mobile:mt-5 custom-max-mobile:border-none'>
             <Link to='/' className='block text-gray-500 no-underline'>
               <span className='cursor-pointer hover:text-orange'>CHÍNH SÁCH TRẢ HÀNG VÀ HOÀN TIỀN</span>
             </Link>

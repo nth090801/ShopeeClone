@@ -62,7 +62,7 @@ export default function AsideFilter({ queryConfig, categories }: Props) {
   }
 
   return (
-    <div className='custom-max-tablet:hidden py-4'>
+    <div className='py-4 '>
       <Link
         to={path.home}
         className={classNames('flex items-center font-bold', {

@@ -103,7 +103,7 @@ export default function NavHeader() {
       <div className='inline-flex custom-max-tablet:flex custom-max-tablet:justify-end '>
         {/* Thông báo */}
         <Popover
-          className='ml-3 flex cursor-pointer items-center py-1 hover:text-white/70'
+          className='custom-mobile-small:hidden ml-3 flex cursor-pointer items-center py-1 hover:text-white/70'
           renderPopover={
             <div className='relative  h-[350px] w-[400px] flex-col rounded-sm border border-gray-200 bg-white shadow-md '>
               <div className=' flex h-[310px] w-full flex-col items-center justify-center '>
@@ -154,7 +154,7 @@ export default function NavHeader() {
           </div>
         </Popover>
         {/* Hỗ trợ */}
-        <div className='ml-3 flex cursor-pointer items-center hover:text-white/70'>
+        <div className='custom-mobile-small:hidden ml-3 flex cursor-pointer items-center hover:text-white/70'>
           <svg
             xmlns='http://www.w3.org/2000/svg'
             fill='none'
@@ -173,7 +173,7 @@ export default function NavHeader() {
         </div>
         {/* Tiếng Việt */}
         <Popover
-          className='ml-3 flex cursor-pointer items-center py-1 hover:text-white/70'
+          className='custom-mobile-small:hidden ml-3 flex cursor-pointer items-center py-1 hover:text-white/70'
           renderPopover={
             <div className='relative rounded-sm border border-gray-200 bg-white shadow-md'>
               <div className='flex flex-col items-start py-2 pl-3 pr-28 '>

@@ -21,7 +21,8 @@ module.exports = {
       screens: {
         'custom-min': '1056px',
         'custom-max-tablet': { max: '1056px' },
-        'custom-max-mobile': { max: '640px' }
+        'custom-max-mobile': { max: '640px' },
+        'custom-mobile-small': { max: '450px' }
       }
     }
   },

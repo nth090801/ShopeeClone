@@ -47,7 +47,7 @@ export default function Header() {
 
           {/* form input header */}
           <form
-            className='col-span-9 custom-max-tablet:col-span-7 custom-max-mobile:col-span-8'
+            className='custom-mobile-small:col-span-7 col-span-9 custom-max-tablet:col-span-7 custom-max-mobile:col-span-8'
             onSubmit={onSubmitSearch}
           >
             <div className='flex rounded-sm bg-white p-1 custom-max-mobile:relative'>
@@ -56,7 +56,7 @@ export default function Header() {
                 className='flex-grow border-none bg-transparent px-3 py-2 text-black outline-none'
                 {...register('name')}
               />
-              <button className='flex-shrink-0 rounded-sm bg-orange px-6 py-2 hover:opacity-90 custom-max-mobile:absolute custom-max-mobile:right-2 custom-max-mobile:py-[6px]'>
+              <button className='custom-mobile-small:px-4 custom-mobile-small:py-1 flex-shrink-0 rounded-sm bg-orange px-6 py-2 hover:opacity-90 custom-max-mobile:absolute custom-max-mobile:right-2 custom-max-mobile:py-[6px]'>
                 <svg
                   xmlns='http://www.w3.org/2000/svg'
                   fill='none'
@@ -76,7 +76,7 @@ export default function Header() {
           </form>
 
           {/* cartShopping icon */}
-          <div className='col-span-1 justify-self-end '>
+          <div className='col-span-1 justify-self-end custom-max-mobile:col-span-2 '>
             <Popover
               renderPopover={
                 <div className=' relative max-w-[400px] rounded-sm border border-gray-200 bg-white text-sm shadow-md'>
