@@ -46,32 +46,41 @@ export default function SortProductList({ queryConfig, pageSize }: Props) {
   return (
     <div className='bg-[#EDEDED] px-3 py-4 '>
       <div className=' flex items-center justify-between gap-2 custom-max-tablet:justify-center'>
-        <div className='flex items-center gap-2 custom-max-tablet:gap-4'>
+        <div className='flex items-center gap-4 custom-max-tablet:gap-2'>
           <div className='custom-max-tablet:hidden'>Sắp xếp theo</div>
           <Button
-            className={classNames('h-8 rounded-sm  px-4 text-center text-sm capitalize custom-max-tablet:text-xs ', {
-              'bg-orange text-white hover:bg-orange/80': isActiveSortBy(sortBy.view),
-              'bg-white text-black hover:bg-slate-100': !isActiveSortBy(sortBy.view)
-            })}
+            className={classNames(
+              'h-8 rounded-sm px-4 text-center text-sm capitalize custom-max-tablet:text-sm custom-max-mobile:px-1 custom-max-mobile:text-xs ',
+              {
+                'bg-orange text-white hover:bg-orange/80': isActiveSortBy(sortBy.view),
+                'bg-white text-black hover:bg-slate-100': !isActiveSortBy(sortBy.view)
+              }
+            )}
             onClick={() => handleSort(sortBy.view)}
           >
             Phổ biến
           </Button>
           <Button
-            className={classNames('h-8 rounded-sm  px-4 text-center text-sm capitalize custom-max-tablet:text-xs ', {
-              'bg-orange text-white hover:bg-orange/80': isActiveSortBy(sortBy.createdAt),
-              'bg-white text-black hover:bg-slate-100': !isActiveSortBy(sortBy.createdAt)
-            })}
+            className={classNames(
+              'h-8 rounded-sm px-4 text-center text-sm capitalize custom-max-tablet:text-sm custom-max-mobile:px-1 custom-max-mobile:text-xs ',
+              {
+                'bg-orange text-white hover:bg-orange/80': isActiveSortBy(sortBy.createdAt),
+                'bg-white text-black hover:bg-slate-100': !isActiveSortBy(sortBy.createdAt)
+              }
+            )}
             onClick={() => handleSort(sortBy.createdAt)}
           >
             {' '}
             Mới nhất
           </Button>
           <Button
-            className={classNames('h-8 rounded-sm  px-4 text-center text-sm capitalize custom-max-tablet:text-xs ', {
-              'bg-orange text-white hover:bg-orange/80': isActiveSortBy(sortBy.sold),
-              'bg-white text-black hover:bg-slate-100': !isActiveSortBy(sortBy.sold)
-            })}
+            className={classNames(
+              'h-8 rounded-sm px-4 text-center text-sm capitalize custom-max-tablet:text-sm custom-max-mobile:px-1 custom-max-mobile:text-xs ',
+              {
+                'bg-orange text-white hover:bg-orange/80': isActiveSortBy(sortBy.sold),
+                'bg-white text-black hover:bg-slate-100': !isActiveSortBy(sortBy.sold)
+              }
+            )}
             onClick={() => handleSort(sortBy.sold)}
           >
             {' '}
@@ -79,7 +88,7 @@ export default function SortProductList({ queryConfig, pageSize }: Props) {
           </Button>
           <select
             className={classNames(
-              'h-8 rounded-sm  border-0 px-4 text-left  text-sm capitalize outline-none custom-max-tablet:text-xs',
+              'h-8 rounded-sm border-0 px-4 text-left text-sm capitalize outline-none custom-max-tablet:text-sm custom-max-mobile:text-xs',
               {
                 'bg-orange text-white hover:bg-orange/80': isActiveSortBy(sortBy.price),
                 'bg-white text-black hover:bg-slate-100': !isActiveSortBy(sortBy.price)

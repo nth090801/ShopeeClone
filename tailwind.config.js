@@ -22,7 +22,8 @@ module.exports = {
         'custom-min': '1056px',
         'custom-max-tablet': { max: '1056px' },
         'custom-max-mobile': { max: '640px' },
-        'custom-mobile-small': { max: '450px' }
+        'custom-mobile-m': { max: '550px' },
+        'custom-mobile-s': { max: '450px' }
       }
     }
   },

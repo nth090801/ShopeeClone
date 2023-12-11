@@ -318,7 +318,7 @@ export default function Footer() {
           </div>
         </div>
         {/* p2 */}
-        <div className='my-16 flex justify-center custom-max-mobile:flex-wrap'>
+        <div className='my-8 flex justify-center custom-max-mobile:flex-wrap'>
           <div className='block border-r border-solid border-gray-300 px-6 text-xs uppercase custom-max-mobile:mt-3 custom-max-mobile:border-none'>
             <Link to='/' className='block text-gray-500 no-underline'>
               <span className='cursor-pointer hover:text-orange '>CHÍNH SÁCH BẢO MẬT</span>
@@ -329,43 +329,19 @@ export default function Footer() {
               <span className='cursor-pointer hover:text-orange'>QUY CHẾ HOẠT ĐỘNG</span>
             </Link>
           </div>
-          <div className='block border-r border-solid border-gray-300 px-6 text-xs uppercase custom-max-mobile:mt-5 custom-max-mobile:border-none'>
+          <div className='block border-r border-solid border-gray-300 px-6 text-xs uppercase custom-max-mobile:mt-3 custom-max-mobile:border-none'>
             <Link to='/' className='block text-gray-500 no-underline'>
               <span className='cursor-pointer hover:text-orange'>CHÍNH SÁCH VẬN CHUYỂN</span>
             </Link>
           </div>
-          <div className='block px-6 text-xs uppercase custom-max-mobile:mt-5 custom-max-mobile:border-none'>
+          <div className='block px-6 text-xs uppercase custom-max-mobile:mt-3 custom-max-mobile:border-none'>
             <Link to='/' className='block text-gray-500 no-underline'>
               <span className='cursor-pointer hover:text-orange'>CHÍNH SÁCH TRẢ HÀNG VÀ HOÀN TIỀN</span>
             </Link>
           </div>
         </div>
+        <div className='block w-full text-center text-sm text-gray-500'>Công ty TNHH Shopee</div>
         {/* p3 */}
-        <div className='flex items-center justify-center'>
-          <Link to='/' className='mx-3 no-underline'>
-            <img
-              className='h-12 w-32 rounded-md'
-              src='http://online.gov.vn/Content/EndUser/LogoCCDVSaleNoti/logoCCDV.png'
-              alt='pic'
-            />
-          </Link>
-          <Link to='/' className='mx-3  no-underline'>
-            <img
-              className='h-12 w-32 rounded-md'
-              src='http://online.gov.vn/Content/EndUser/LogoCCDVSaleNoti/logoCCDV.png'
-              alt='pic'
-            />
-          </Link>
-          <Link to='/' className='mx-3  no-underline'>
-            <img
-              className='h-12 w-32 rounded-md'
-              src='http://online.gov.vn/Content/EndUser/LogoCCDVSaleNoti/logoCCDV.png'
-              alt='pic'
-            />
-          </Link>
-        </div>
-        <div className='mb-6 mt-2 block w-full text-center text-sm text-gray-500'>Công ty TNHH Shopee</div>
-        {/* p4 */}
         <div className='mt-10 text-center text-xs text-gray-500'>
           <div className='mt-6'>
             Địa chỉ: Tầng 4-5-6, Tòa nhà Capital Place, số 29 đường Liễu Giai, Phường Ngọc Khánh, Quận Ba Đình, Thành
