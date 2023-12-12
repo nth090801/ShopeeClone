@@ -16,7 +16,7 @@ export default function QuantityController({
   onDecrease,
   onType,
   onFocusOut,
-  classNameWrapper = 'ml-10',
+  classNameWrapper = 'ml-10 custom-max-mobile:ml-5',
   value,
   ...rest
 }: Props) {

@@ -162,8 +162,8 @@ export default function Cart() {
           <div className='overflow-auto'>
             <div className='min-w-[1000px]'>
               {/* p1 */}
-              <div className='grid grid-cols-12 rounded-sm bg-white px-9 py-5 text-sm capitalize text-gray-500 shadow'>
-                <div className='col-span-6'>
+              <div className='grid grid-cols-12 rounded-sm bg-white px-9 py-5 text-sm capitalize text-gray-500 shadow custom-max-tablet:grid-cols-10'>
+                <div className='col-span-6 custom-max-tablet:col-span-4 custom-max-mobile:col-span-3'>
                   <div className='flex items-center'>
                     <div className='flex flex-shrink-0 items-center justify-center pr-5'>
                       <input
@@ -190,9 +190,9 @@ export default function Cart() {
                 {extendedPurchases?.map((purchase, index) => (
                   <div
                     key={purchase._id}
-                    className='mb-5 grid grid-cols-12 items-center rounded-sm border border-gray-200 bg-white px-4 py-5 text-center text-sm text-gray-500 first:mt-0'
+                    className='mb-5 grid grid-cols-12 items-center rounded-sm border border-gray-200 bg-white px-4 py-5 text-center text-sm text-gray-500 first:mt-0 custom-max-tablet:grid-cols-10'
                   >
-                    <div className='col-span-6'>
+                    <div className='col-span-6 custom-max-tablet:col-span-4 custom-max-mobile:col-span-3'>
                       <div className='flex'>
                         <div className='flex flex-shrink-0 items-center justify-center pr-5'>
                           <input

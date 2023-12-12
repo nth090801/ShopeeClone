@@ -1,5 +1,4 @@
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query'
-import DOMPurify from 'dompurify'
 import { useEffect, useMemo, useRef, useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
 import productApi from 'src/apis/product.api'
@@ -16,6 +15,7 @@ import path from 'src/constants/path'
 import { useTranslation } from 'react-i18next'
 import { Helmet } from 'react-helmet-async'
 import { convert } from 'html-to-text'
+import ReadMore from 'src/components/ReadMore'
 
 export default function ProductDetail() {
   const { t } = useTranslation('product')
@@ -132,12 +132,12 @@ export default function ProductDetail() {
       </Helmet>
       <div className='container'>
         <div className='bg-white p-4 shadow'>
-          <div className='grid grid-cols-12 gap-9'>
-            <div className='col-span-5'>
+          <div className='grid grid-cols-12 gap-9 custom-max-mobile:gap-0'>
+            <div className='col-span-5 custom-max-mobile:col-span-12 '>
               <div
                 onMouseMove={handleZoom}
                 onMouseLeave={handleRemoveZoom}
-                className='relative w-full cursor-zoom-in overflow-hidden pt-[100%] shadow'
+                className='relative w-full cursor-zoom-in overflow-hidden pt-[100%] shadow '
               >
                 <img
                   ref={imageRef}
@@ -196,9 +196,9 @@ export default function ProductDetail() {
                 </button>
               </div>
             </div>
-            <div className='col-span-7'>
+            <div className='col-span-7 custom-max-mobile:col-span-12'>
               <h1 className='text-xl font-medium uppercase'>{product.name}</h1>
-              <div className='mt-8 flex items-center'>
+              <div className='mt-8 flex items-center custom-max-mobile:mt-3'>
                 <div className='flex items-center'>
                   <span className='mr-1 border-b border-b-orange text-orange'>{product.rating}</span>
                   <ProductRating
@@ -213,14 +213,14 @@ export default function ProductDetail() {
                   <span className='ml-1 text-gray-500'>Đã bán</span>
                 </div>
               </div>
-              <div className='mt-8 flex items-center bg-gray-50 px-5 py-4'>
+              <div className='mt-8 flex items-center bg-gray-50 px-5 py-4 custom-max-mobile:mt-3 custom-max-mobile:px-0'>
                 <div className='text-gray-500 line-through'>₫{formatCurrency(product.price_before_discount)}</div>
                 <div className='ml-3 text-3xl font-medium text-orange'>₫{formatCurrency(product.price)}</div>
                 <div className='ml-4 rounded-sm bg-orange px-1 py-[2px] text-xs font-semibold uppercase text-white'>
                   {rateSale(product.price_before_discount, product.price)} giảm
                 </div>
               </div>
-              <div className='mt-8 flex items-center'>
+              <div className='mt-8 flex items-center custom-max-mobile:mt-3 '>
                 <div className='capitalize text-gray-500'>Số lượng</div>
                 <QuantityController
                   onDecrease={handleBuyCount}
@@ -229,7 +229,7 @@ export default function ProductDetail() {
                   value={buyCount}
                   max={product.quantity}
                 />
-                <div className='ml-6 text-sm text-gray-500'>
+                <div className='ml-6 text-sm text-gray-500  custom-max-mobile:text-xs'>
                   {product.quantity} {t('available')}
                 </div>
               </div>
@@ -276,14 +276,10 @@ export default function ProductDetail() {
       </div>
       <div className='mt-8'>
         <div className='container'>
-          <div className='mt-8 bg-white p-4 shadow'>
+          <div className='mt-8 overflow-hidden bg-white p-4 shadow'>
             <div className='rounded bg-gray-50 p-4 text-lg capitalize text-slate-700'>Mô tả sản phẩm</div>
-            <div className='mx-4 mb-4 mt-12 text-sm leading-loose'>
-              <div
-                dangerouslySetInnerHTML={{
-                  __html: DOMPurify.sanitize(product.description)
-                }}
-              ></div>
+            <div className='mx-4 mb-4 mt-6 text-sm leading-loose'>
+              <ReadMore content={product.description} maxLength={200} />
             </div>
           </div>
         </div>
